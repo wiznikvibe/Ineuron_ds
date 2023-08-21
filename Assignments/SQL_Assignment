@@ -1,0 +1,53 @@
+create database Assignments;
+use Assignments;
+
+create table cadet(
+id varchar(25),
+tech varchar (25)
+);
+
+insert into Assignments.cadet values 
+("1","DS"),
+("1","Tableau"),
+("1","SQL"),
+("2","R"),
+("2","PowerBI"),
+("1","Python");
+
+select id , count(tech) as tech_stack from cadet
+where tech in ("Python","DS","SQL") group by id;
+
+create table product_page (
+prd_id varchar(25), 
+product varchar(20)
+);
+
+insert into product_page values 
+('1001','Blog'),
+('1002','Youtube'),
+('1003','Education');
+
+create table page_like(
+user_id varchar (25),
+prd_id varchar(25),
+like_date varchar(20)
+);
+
+insert into page_like values 
+('1','1001','18-09-2023'),
+('2','1003','17-09-2023');
+
+# Solution
+select pp.prd_id 
+from product_page pp 
+left join page_like pl on pp.prd_id = pl.prd_id
+where pl.prd_id is null;
+
+
+
+
+
+
+
+
+
